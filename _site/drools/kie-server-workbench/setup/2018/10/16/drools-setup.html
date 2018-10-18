@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>How to set up drools kie server and kie workbench for development using wildfly | Som Pammar</title>
+<meta name="generator" content="Jekyll v3.8.4" />
+<meta property="og:title" content="How to set up drools kie server and kie workbench for development using wildfly" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Purpose" />
+<meta property="og:description" content="Purpose" />
+<link rel="canonical" href="http://localhost:4000/drools/kie-server-workbench/setup/2018/10/16/drools-setup.html" />
+<meta property="og:url" content="http://localhost:4000/drools/kie-server-workbench/setup/2018/10/16/drools-setup.html" />
+<meta property="og:site_name" content="Som Pammar" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2018-10-16T18:11:34-07:00" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/drools/kie-server-workbench/setup/2018/10/16/drools-setup.html","headline":"How to set up drools kie server and kie workbench for development using wildfly","dateModified":"2018-10-16T18:11:34-07:00","datePublished":"2018-10-16T18:11:34-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/drools/kie-server-workbench/setup/2018/10/16/drools-setup.html"},"description":"Purpose","@type":"BlogPosting","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Som Pammar" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Som Pammar</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">How to set up drools kie server and kie workbench for development using wildfly</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2018-10-16T18:11:34-07:00" itemprop="datePublished">Oct 16, 2018
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="purpose">Purpose</h2>
+
+<p>This link helps you quickly setup drools kie server and workbench and configure them. This uses <a href="https://www.drools.org/download/download.html">drools</a> version <a href="http://download.jboss.org/drools/release/7.12.0.Final/">7.12.0.Final</a>. This link focuses on setting up drools on wildfly. There is a separate link regarding set up instructions for tomcat. These instructions are tailored for running it from unix like machines.</p>
+
+<h2 id="pre-requisites">Pre-requisites</h2>
+
+<ul>
+  <li>
+    <p>Download and extract <a href="http://download.jboss.org/wildfly/11.0.0.Final/wildfly-11.0.0.Final.zip">wildfly 11</a> as this is the version of wildfly currently supported by drools 7.12.0.Final.</p>
+  </li>
+  <li>
+    <p>Download and install jdk latest version 1.8 or above</p>
+  </li>
+</ul>
+
+<h2 id="download-and-copy-the-workbench-and-kie-server-files">Download and copy the workbench and kie-server files</h2>
+
+<p><a href="https://download.jboss.org/drools/release/7.12.0.Final/kie-drools-wb-7.12.0.Final-wildfly11.war">Download kie-workbench</a>.</p>
+
+<p>Copy the war file <code class="highlighter-rouge">kie-drools-wb-7.12.0.Final-wildfly11.war</code> to <code class="highlighter-rouge">{wildfly}/standalone/deployments</code></p>
+
+<p><a href="https://download.jboss.org/drools/release/7.12.0.Final/drools-distribution-7.12.0.Final.zip">Download and extract the drools engine distribution file</a></p>
+
+<p>Copy the file <code class="highlighter-rouge">kie-server-7.12.0.Final-ee7.war</code> from extracted directory to <code class="highlighter-rouge">{wildfly}/standalone/deployments</code></p>
+
+<h2 id="set-up-wildfly-server">Set up wildfly server</h2>
+
+<ul>
+  <li>Create user kieserver by running the following command from <code class="highlighter-rouge">{wildfly}/bin</code></li>
+</ul>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./add-user.sh -a -u kieserver -p kieserver -ro admin,kie-server,rest-all,kiemgmt
+</code></pre></div></div>
+
+<ul>
+  <li>Locate and edit <code class="highlighter-rouge">standalone.conf</code> (or <code class="highlighter-rouge">standalone.conf.bat</code> for windows based systems) file under <code class="highlighter-rouge">{wildfly}/bin</code> directory</li>
+  <li>
+    <p>Increase the java heap size and MaxMetaspaceSize to suit your needs.</p>
+
+    <pre><code class="language-script">     JAVA_OPTS="-Xms1024m -Xmx1024m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=1024m -Djava.net.preferIPv4Stack=true"
+</code></pre>
+  </li>
+  <li>Create a script e.g. <code class="highlighter-rouge">start-drools.sh</code> under <code class="highlighter-rouge">{wildfly}/bin</code> and copy the following into this file.</li>
+</ul>
+
+<pre><code class="language-script"> SERVER_CONFIG="--server-config=standalone-full.xml"
+ KIE_SERVER_USER="-Dorg.kie.server.user=kieserver"
+ KIE_SERVER_PWD="-Dorg.kie.server.pwd=kieserver"
+ KIE_CONTROLLER_USER="-Dorg.kie.server.controller.user=kieserver"
+ KIE_CONTROLLER_PWD="-Dorg.kie.server.controller.pwd=kieserver"
+ KIE_CONTROLLER_URL="http://localhost:8080/kie-drools-wb-7.12.0.Final-wildfly11/rest/controller"
+ KIE_SERVER_URL="http://localhost:8080/kie-server-7.12.0.Final-ee7/services/rest/server"
+ KIE_SERVER="-Dorg.kie.server.location=$KIE_SERVER_URL"
+ KIE_CONTROLLER="-Dorg.kie.server.controller=$KIE_CONTROLLER_URL"
+ KIE_SERVER_ID="-Dorg.kie.server.id=wildfly-kieserver"
+
+ PARAMS="$SERVER_CONFIG $KIE_SERVER_USER $KIE_SERVER_PWD $KIE_CONTROLLER_USER $KIE_CONTROLLER_PWD $KIE_SERVER $KIE_CONTROLLER $KIE_SERVER_ID"
+
+echo "Starting drools with PARAMS: $PARAMS" 
+./standalone.sh $PARAMS
+</code></pre>
+<ul>
+  <li>
+    <p>Change the file permissions to allow execute and start the script.
+<code class="highlighter-rouge">./start-drools.sh</code></p>
+  </li>
+  <li>
+    <p>Go to URL using your browser <a href="http://localhost:8080/kie-drools-wb-7.12.0.Final-wildfly11/">http://localhost:8080/kie-drools-wb-7.12.0.Final-wildfly11/</a> and login using Username <code class="highlighter-rouge">kieserver</code> and password <code class="highlighter-rouge">kieserver</code></p>
+  </li>
+</ul>
+
+<h2 id="simple-java-program-to-connect-to-drools-kie-server-and-execute-rules">Simple Java Program to connect to Drools Kie Server and execute rules</h2>
+
+<p>Refer to sample program at <a href="https://github.com/sompammar/drools-kieserver-restclient">https://github.com/sompammar/drools-kieserver-restclient</a> for help with creating a sample java application using drools rest api client</p>
+
+<h2 id="references">References</h2>
+
+<p>The above steps were borrowed and adapted for latest version of drools from this link. <a href="https://www.intertech.com/Blog/simple-setup-of-drools-kie-workbench-and-kie-server-in-one-wildfly-instance/">https://www.intertech.com/Blog/simple-setup-of-drools-kie-workbench-and-kie-server-in-one-wildfly-instance/</a></p>
+
+
+  </div><a class="u-url" href="/drools/kie-server-workbench/setup/2018/10/16/drools-setup.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Som Pammar</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Som Pammar</li><li><a class="u-email" href="mailto:som.pammar@gmail.com">som.pammar@gmail.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/sompammar"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">sompammar</span></a></li><li><a href="https://www.twitter.com/sompammar"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">sompammar</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Sharing the learnings from day-to-day software development cycles</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

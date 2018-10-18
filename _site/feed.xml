@@ -1,3 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-09-27T17:59:00-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Som Pammar</title><subtitle>Sharing the learnings from day-to-day software development cycles</subtitle><entry><title type="html">Embed Oracle Data Visualization dashboard in Oracle Jet application</title><link href="http://localhost:4000/oracle/jet/data/visualization/dv/2018/09/22/embed-dv-dashboard.html" rel="alternate" type="text/html" title="Embed Oracle Data Visualization dashboard in Oracle Jet application" /><published>2018-09-22T21:11:34-07:00</published><updated>2018-09-22T21:11:34-07:00</updated><id>http://localhost:4000/oracle/jet/data/visualization/dv/2018/09/22/embed-dv-dashboard</id><content type="html" xml:base="http://localhost:4000/oracle/jet/data/visualization/dv/2018/09/22/embed-dv-dashboard.html">&lt;p&gt;If you are using Oracle Data Visualization and want to embed a dashboard created into a custom web application &lt;a href=&quot;https://www.oracle.com/webfolder/technetwork/jet/index.html&quot;&gt;Oracle Jet&lt;/a&gt;, you can refer to this site. It also has a sample Oracle Jet application and a sample visualization that you can import into your Oracle DV environment.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-17T17:34:22-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Som Pammar</title><subtitle>Sharing the learnings from day-to-day software development cycles</subtitle><entry><title type="html">How to set up drools kie server and kie workbench for development using wildfly</title><link href="http://localhost:4000/drools/kie-server-workbench/setup/2018/10/16/drools-setup.html" rel="alternate" type="text/html" title="How to set up drools kie server and kie workbench for development using wildfly" /><published>2018-10-16T18:11:34-07:00</published><updated>2018-10-16T18:11:34-07:00</updated><id>http://localhost:4000/drools/kie-server-workbench/setup/2018/10/16/drools-setup</id><content type="html" xml:base="http://localhost:4000/drools/kie-server-workbench/setup/2018/10/16/drools-setup.html">&lt;h2 id=&quot;purpose&quot;&gt;Purpose&lt;/h2&gt;
+
+&lt;p&gt;This link helps you quickly setup drools kie server and workbench and configure them. This uses &lt;a href=&quot;https://www.drools.org/download/download.html&quot;&gt;drools&lt;/a&gt; version &lt;a href=&quot;http://download.jboss.org/drools/release/7.12.0.Final/&quot;&gt;7.12.0.Final&lt;/a&gt;. This link focuses on setting up drools on wildfly. There is a separate link regarding set up instructions for tomcat. These instructions are tailored for running it from unix like machines.&lt;/p&gt;
+
+&lt;h2 id=&quot;pre-requisites&quot;&gt;Pre-requisites&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Download and extract &lt;a href=&quot;http://download.jboss.org/wildfly/11.0.0.Final/wildfly-11.0.0.Final.zip&quot;&gt;wildfly 11&lt;/a&gt; as this is the version of wildfly currently supported by drools 7.12.0.Final.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Download and install jdk latest version 1.8 or above&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;download-and-copy-the-workbench-and-kie-server-files&quot;&gt;Download and copy the workbench and kie-server files&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://download.jboss.org/drools/release/7.12.0.Final/kie-drools-wb-7.12.0.Final-wildfly11.war&quot;&gt;Download kie-workbench&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Copy the war file &lt;code class=&quot;highlighter-rouge&quot;&gt;kie-drools-wb-7.12.0.Final-wildfly11.war&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;{wildfly}/standalone/deployments&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://download.jboss.org/drools/release/7.12.0.Final/drools-distribution-7.12.0.Final.zip&quot;&gt;Download and extract the drools engine distribution file&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Copy the file &lt;code class=&quot;highlighter-rouge&quot;&gt;kie-server-7.12.0.Final-ee7.war&lt;/code&gt; from extracted directory to &lt;code class=&quot;highlighter-rouge&quot;&gt;{wildfly}/standalone/deployments&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;set-up-wildfly-server&quot;&gt;Set up wildfly server&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Create user kieserver by running the following command from &lt;code class=&quot;highlighter-rouge&quot;&gt;{wildfly}/bin&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./add-user.sh -a -u kieserver -p kieserver -ro admin,kie-server,rest-all,kiemgmt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Locate and edit &lt;code class=&quot;highlighter-rouge&quot;&gt;standalone.conf&lt;/code&gt; (or &lt;code class=&quot;highlighter-rouge&quot;&gt;standalone.conf.bat&lt;/code&gt; for windows based systems) file under &lt;code class=&quot;highlighter-rouge&quot;&gt;{wildfly}/bin&lt;/code&gt; directory&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Increase the java heap size and MaxMetaspaceSize to suit your needs.&lt;/p&gt;
+
+    &lt;pre&gt;&lt;code class=&quot;language-script&quot;&gt;     JAVA_OPTS=&quot;-Xms1024m -Xmx1024m -XX:MetaspaceSize=96M -XX:MaxMetaspaceSize=1024m -Djava.net.preferIPv4Stack=true&quot;
+&lt;/code&gt;&lt;/pre&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Create a script e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;start-drools.sh&lt;/code&gt; under &lt;code class=&quot;highlighter-rouge&quot;&gt;{wildfly}/bin&lt;/code&gt; and copy the following into this file.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-script&quot;&gt; SERVER_CONFIG=&quot;--server-config=standalone-full.xml&quot;
+ KIE_SERVER_USER=&quot;-Dorg.kie.server.user=kieserver&quot;
+ KIE_SERVER_PWD=&quot;-Dorg.kie.server.pwd=kieserver&quot;
+ KIE_CONTROLLER_USER=&quot;-Dorg.kie.server.controller.user=kieserver&quot;
+ KIE_CONTROLLER_PWD=&quot;-Dorg.kie.server.controller.pwd=kieserver&quot;
+ KIE_CONTROLLER_URL=&quot;http://localhost:8080/kie-drools-wb-7.12.0.Final-wildfly11/rest/controller&quot;
+ KIE_SERVER_URL=&quot;http://localhost:8080/kie-server-7.12.0.Final-ee7/services/rest/server&quot;
+ KIE_SERVER=&quot;-Dorg.kie.server.location=$KIE_SERVER_URL&quot;
+ KIE_CONTROLLER=&quot;-Dorg.kie.server.controller=$KIE_CONTROLLER_URL&quot;
+ KIE_SERVER_ID=&quot;-Dorg.kie.server.id=wildfly-kieserver&quot;
+
+ PARAMS=&quot;$SERVER_CONFIG $KIE_SERVER_USER $KIE_SERVER_PWD $KIE_CONTROLLER_USER $KIE_CONTROLLER_PWD $KIE_SERVER $KIE_CONTROLLER $KIE_SERVER_ID&quot;
+
+echo &quot;Starting drools with PARAMS: $PARAMS&quot; 
+./standalone.sh $PARAMS
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Change the file permissions to allow execute and start the script.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;./start-drools.sh&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Go to URL using your browser &lt;a href=&quot;http://localhost:8080/kie-drools-wb-7.12.0.Final-wildfly11/&quot;&gt;http://localhost:8080/kie-drools-wb-7.12.0.Final-wildfly11/&lt;/a&gt; and login using Username &lt;code class=&quot;highlighter-rouge&quot;&gt;kieserver&lt;/code&gt; and password &lt;code class=&quot;highlighter-rouge&quot;&gt;kieserver&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;simple-java-program-to-connect-to-drools-kie-server-and-execute-rules&quot;&gt;Simple Java Program to connect to Drools Kie Server and execute rules&lt;/h2&gt;
+
+&lt;p&gt;Refer to sample program at &lt;a href=&quot;https://github.com/sompammar/drools-kieserver-restclient&quot;&gt;https://github.com/sompammar/drools-kieserver-restclient&lt;/a&gt; for help with creating a sample java application using drools rest api client&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;The above steps were borrowed and adapted for latest version of drools from this link. &lt;a href=&quot;https://www.intertech.com/Blog/simple-setup-of-drools-kie-workbench-and-kie-server-in-one-wildfly-instance/&quot;&gt;https://www.intertech.com/Blog/simple-setup-of-drools-kie-workbench-and-kie-server-in-one-wildfly-instance/&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Purpose</summary></entry><entry><title type="html">Embed Oracle Data Visualization dashboard in Oracle Jet application</title><link href="http://localhost:4000/oracle/jet/data/visualization/dv/2018/09/22/embed-dv-dashboard.html" rel="alternate" type="text/html" title="Embed Oracle Data Visualization dashboard in Oracle Jet application" /><published>2018-09-22T21:11:34-07:00</published><updated>2018-09-22T21:11:34-07:00</updated><id>http://localhost:4000/oracle/jet/data/visualization/dv/2018/09/22/embed-dv-dashboard</id><content type="html" xml:base="http://localhost:4000/oracle/jet/data/visualization/dv/2018/09/22/embed-dv-dashboard.html">&lt;p&gt;If you are using Oracle Data Visualization and want to embed a dashboard created into a custom web application &lt;a href=&quot;https://www.oracle.com/webfolder/technetwork/jet/index.html&quot;&gt;Oracle Jet&lt;/a&gt;, you can refer to this site. It also has a sample Oracle Jet application and a sample visualization that you can import into your Oracle DV environment.&lt;/p&gt;
 
 &lt;p&gt;Git hub project link - &lt;a href=&quot;https://github.com/sompammar/oracle-dv-embedding&quot;&gt;oracle-dv-embedding&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">If you are using Oracle Data Visualization and want to embed a dashboard created into a custom web application Oracle Jet, you can refer to this site. It also has a sample Oracle Jet application and a sample visualization that you can import into your Oracle DV environment.</summary></entry><entry><title type="html">Oracle unexpire user password</title><link href="http://localhost:4000/database/2018/09/01/unexpire-dbuser.html" rel="alternate" type="text/html" title="Oracle unexpire user password" /><published>2018-09-01T16:33:34-07:00</published><updated>2018-09-01T16:33:34-07:00</updated><id>http://localhost:4000/database/2018/09/01/unexpire-dbuser</id><content type="html" xml:base="http://localhost:4000/database/2018/09/01/unexpire-dbuser.html">&lt;p&gt;Recently, I came across a situation where the database user account had expired. This user account was used by docker instance and was more complicated to update the password in that instance. So I tried to find ways to keep the same password but make the account unexpired. I found this &lt;a href=&quot;https://www.krenger.ch/blog/oracle-workaround-for-password-unexpire/&quot;&gt;link&lt;/a&gt; which I thought was interesting and saved my day.&lt;/p&gt;</content><author><name></name></author><summary type="html">Recently, I came across a situation where the database user account had expired. This user account was used by docker instance and was more complicated to update the password in that instance. So I tried to find ways to keep the same password but make the account unexpired. I found this link which I thought was interesting and saved my day.</summary></entry></feed>
