@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Generate CRON Expression"
-date:   2018-09-01 18:41:34 -0700
+date:   2018-11-29 18:41:34 -0700
 categories: quartz cron scheduler expression builder
 ---
 Let's say you want to build cron expression. You want to take input from the user on when to start a job. It could be a future date. And from there you want it to repeat on a daily/weekly/monthly/quarterly basis.
