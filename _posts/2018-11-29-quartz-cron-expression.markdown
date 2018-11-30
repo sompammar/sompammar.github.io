@@ -10,6 +10,52 @@ e.g. If you select as your starting date as Jan 1, 2018, Monday 9:35:02 AM, and 
 
 Here's a sample program to achieve this.
 
+
+```java
+public class ScheduleDetail {
+    public ScheduleDetail(Date inputDate, Frequency frequency) {
+        this.startTime = inputDate;
+        this.repeatFrequency = frequency;
+    }
+
+    public ScheduleDetail(Date inputDate) {
+        this.startTime = inputDate;
+    }
+
+    public ScheduleDetail() {
+    }
+
+    public static enum Frequency {
+        HOURLY,
+        DAILY,
+        MONTHLY,
+        WEEKLY,
+        QUARTERLY
+    }
+
+    Date startTime;
+    Frequency repeatFrequency;
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Frequency getRepeatFrequency() {
+        return repeatFrequency;
+    }
+
+    public void setRepeatFrequency(Frequency repeatFrequency) {
+        this.repeatFrequency = repeatFrequency;
+    }
+}
+
+```
+
+
 ```java
     public static String toCronExpression(ScheduleDetail scheduleDetail) {
         Date startDate = scheduleDetail.getStartTime();
