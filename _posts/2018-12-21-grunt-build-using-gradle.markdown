@@ -60,7 +60,7 @@ clean.doFirst {
 }
 
 war {
-    archiveName = "dataconfig.war"
+    archiveName = "mywebapp.war"
     enabled = true
     from ("${project.projectDir}/ui/web") {
         include '**/**'
