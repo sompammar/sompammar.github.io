@@ -68,12 +68,13 @@ private Parameter buildPathParam(String name, String value, List<String> allowed
 ## Swager UI 
 [http://localhost:8080/swagger-ui.html?urls.primaryName=%40public-api#/hello-endpoint/sayHelloUsingGET](http://localhost:8080/swagger-ui.html?urls.primaryName=%40public-api#/hello-endpoint/sayHelloUsingGET)
 
-![](./images/Swagger_UI.png)
+![](../images/Swagger_UI.png)
 
 
 ## View Code 
 Code can be viewed at [https://github.com/sompammar/springboot-swagger](https://github.com/sompammar/springboot-swagger)
-[Download] (https://github.com/sompammar/springboot-swagger/archive/master.zip)
+
+[Download Code](https://github.com/sompammar/springboot-swagger/archive/master.zip)
 
 
 ## Credits
